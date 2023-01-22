@@ -11,7 +11,7 @@ from pixelmatch.contrib.PIL import pixelmatch
 
 @pytest.fixture
 def assert_snapshot(pytestconfig: Any, request: Any, browser_name: str) -> Callable:
-    test_name = f"{str(Path(request.node.name))}[{str(sys.platform)}]"
+    test_name = f"{str(Path(request.node.name))}[{browser_name}][{str(sys.platform)}]"
     test_dir = str(Path(request.node.name)).split('[', 1)[0]
 
     def compare(img: bytes, *, threshold: float = 0.1, name=f'{test_name}.png', fail_fast=False) -> None:
